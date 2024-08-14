@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Alerts {
 
-    public static WebDriver driver;
+    public  WebDriver driver;
     Alert alert;
 
     @BeforeMethod

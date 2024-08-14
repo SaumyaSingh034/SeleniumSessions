@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 
 public class DragAndDrop {
 
-    public static WebDriver driver;
+    public WebDriver driver;
 
     @BeforeMethod
     public void openBrowser() {
