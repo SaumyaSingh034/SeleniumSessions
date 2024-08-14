@@ -25,12 +25,13 @@ public class BrowserWindow {
         driver.manage().deleteAllCookies();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        driver.get("https://demoqa.com/browser-windows");
 
     }
 
     @Test
     public void browserWindow() throws InterruptedException {
-        driver.get("https://demoqa.com/browser-windows");
+
        driver.findElement(By.id("windowButton")).click();
        Set<String> window = driver.getWindowHandles();
        Iterator<String> it = window.iterator();
@@ -48,6 +49,23 @@ public class BrowserWindow {
       driver.switchTo().window(parentWindow);
       Thread.sleep(2000);
       System.out.println(driver.getTitle());
+    }
+
+    @Test
+    public void browserMessage(){
+        driver.findElement(By.id("messageWindowButton")).click();
+        Set<String> window = driver.getWindowHandles();
+        Iterator<String> it = window.iterator();
+        String parent = it.next();
+        String child = it.next();
+
+        driver.switchTo().window(child);
+       System.out.println( driver.findElement(By.tagName("body")).getText());
+       driver.close();
+
+       driver.switchTo().defaultContent();
+       System.out.println(driver.getTitle());
+
     }
 
     @AfterMethod
