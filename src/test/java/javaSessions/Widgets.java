@@ -4,11 +4,13 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class Widgets {
@@ -43,6 +45,25 @@ public class Widgets {
         System.out.println(driver.findElement(By.xpath("//div[@id='accordianContainer']/h1")).getText());
         System.out.println(driver.findElement(By.xpath("//div[@id='accordianContainer']/h1")).getAttribute("class"));
 
+    }
+
+    @Test
+    public void autoComplete() throws InterruptedException {
+        driver.get("https://demoqa.com/auto-complete");
+        Thread.sleep(2000);
+        WebElement e = driver.findElement(By.id("autoCompleteMultipleContainer"));
+      //  e.click();
+      //  driver.switchTo().frame(0);
+        e.sendKeys("red");
+       //By.xpath("//div[@class='auto-complete__value-container auto-complete__value-container--is-multi css-1hwfws3']")).sendKeys("r");
+        Thread.sleep(2000);
+        List<WebElement> colors = driver.findElements(By.xpath("//div[@class='auto-complete__menu css-26l3qy-menu']"));
+        for(WebElement color : colors){
+            System.out.println(color);
+            if(color.getText().equalsIgnoreCase("Purple")){
+                color.click();
+            }
+        }
 
     }
 
