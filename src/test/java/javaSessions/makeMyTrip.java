@@ -10,6 +10,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class makeMyTrip {
@@ -31,7 +32,25 @@ public class makeMyTrip {
         WebElement from = driver.findElement(By.id("fromCity"));
         WebElement to = driver.findElement(By.id("toCity"));
         Thread.sleep(5000);
-        from.sendKeys("Mumbai");
+        from.click();
+        driver.findElement(By.xpath("//input[@placeholder='From']")).sendKeys("BOM");
+        List<WebElement> fromCities = driver.findElements(By.xpath("//ul[@role='listbox']"));
+        for(WebElement e : fromCities){
+            if(e.getText().contains("Mumbai")){
+                e.click();
+            }
+        }
+
+        to.click();
+        driver.findElement(By.xpath("//input[@placeholder='To']")).sendKeys("BLR");
+        List<WebElement> toCities = driver.findElements(By.xpath("//ul[@role='listbox']"));
+
+        for(WebElement e : toCities){
+            if(e.getText().contains("Bengaluru")){
+                e.click();
+            }
+        }
+
 
 
 
@@ -39,6 +58,6 @@ public class makeMyTrip {
 
     @AfterMethod
     public void tearDown(){
-        driver.quit();
+        //driver.quit();
     }
 }
