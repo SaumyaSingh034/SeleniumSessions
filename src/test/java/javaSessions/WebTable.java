@@ -5,6 +5,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -64,7 +67,10 @@ public class WebTable {
     @Test
     public void simpleWebTable(){
         driver.get("https://demo.guru99.com/test/table.html");
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+
         WebElement table = driver.findElement(By.xpath("//table[@cellspacing='1']/tbody"));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//table[@cellspacing='1']/tbody")));
         List<WebElement> row = table.findElements(By.tagName("tr"));
         List<WebElement> col ;
 
