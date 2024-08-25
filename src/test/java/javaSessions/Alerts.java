@@ -5,6 +5,7 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -65,6 +66,12 @@ public class Alerts {
         alert = driver.switchTo().alert();
         alert.sendKeys("Saumya Singh");
         alert.accept();
+    }
+
+    @Test(priority = 3)
+    public void testing(){
+        Actions act = new Actions(driver);
+        //act.moveToElement(driver.findElement())
     }
 
     @AfterMethod
