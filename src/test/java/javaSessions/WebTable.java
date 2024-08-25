@@ -2,9 +2,11 @@ package javaSessions;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
+import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.*;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -94,6 +96,18 @@ public class WebTable {
                 .pollingEvery(Duration.ofSeconds(2))
                 .ignoring(NoSuchElementException.class);
         WebElement element = w.until(ExpectedConditions.presenceOfElementLocated(By.id("data")));
+    }
+
+    @Test
+    public void testingSelenium(){
+        SearchContext sc = new ChromeDriver();
+        //Only SC methods are accessible
+
+        WebDriver wd = new ChromeDriver();
+        wd.quit();
+
+        RemoteWebDriver rc = new ChromeDriver();
+        rc.get(" ");
     }
 
     @AfterMethod
