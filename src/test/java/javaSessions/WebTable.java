@@ -5,16 +5,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.*;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.text.NumberFormat;
 import java.text.ParseException;
+import java.time.Duration;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 
 public class WebTable {
@@ -84,6 +84,16 @@ public class WebTable {
                 System.out.println(col.get(0).getText());
             }
         }
+    }
+
+    @Test
+    public void applyingFluentWait(){
+        driver.get("https://www.google.co.in/");
+        Wait<WebDriver> w = new FluentWait<WebDriver>(driver).withTimeout(
+                Duration.ofSeconds(50))
+                .pollingEvery(Duration.ofSeconds(2))
+                .ignoring(NoSuchElementException.class);
+        WebElement element = w.until(ExpectedConditions.presenceOfElementLocated(By.id("data")));
     }
 
     @AfterMethod
