@@ -108,6 +108,7 @@ public class WebTable {
 
         RemoteWebDriver rc = new ChromeDriver();
         rc.get(" ");
+
     }
 
     @AfterMethod
