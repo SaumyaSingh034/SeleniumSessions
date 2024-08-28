@@ -11,6 +11,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 public class FacebookDataProvider {
@@ -40,12 +41,12 @@ public class FacebookDataProvider {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
         //Explicit wait
-        WebDriverWait wait = new WebDriverWait(driver, 2);
+        WebDriverWait wait = new WebDriverWait(driver,  Duration.ofSeconds(10));
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id("")));
 
         //DesiredCapabilities For HTTPS Certification
         DesiredCapabilities ds = new DesiredCapabilities();
-        ds.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+        ds.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);
 
 
 

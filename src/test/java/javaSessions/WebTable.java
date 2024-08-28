@@ -69,7 +69,7 @@ public class WebTable {
     @Test
     public void simpleWebTable(){
         driver.get("https://demo.guru99.com/test/table.html");
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         WebElement table = driver.findElement(By.xpath("//table[@cellspacing='1']/tbody"));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//table[@cellspacing='1']/tbody")));
