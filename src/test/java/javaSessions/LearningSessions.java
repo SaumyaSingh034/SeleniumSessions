@@ -4,8 +4,10 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -54,6 +56,24 @@ public class LearningSessions {
            WebElement radio = driver.findElement(By.xpath("radioBtn"))
                    if(!radio.isSelected())
                        radio.click();
+        }
+
+        @Test
+    public void learnWaits(){
+        //Waits --> Implicit Wait and Explicit Wait ---> WebDriverWait and FluentWait
+            //implicit wait
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+
+
+            //WebDriverWait
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(4));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("value")));
+
+            //Fluent Wait
+            Wait<WebDriver> fWait = new FluentWait<>(driver)
+                    .withTimeout(Duration.ofSeconds(15))
+                    .pollingEvery(Duration.ofSeconds(2))
+                    .ignoring(ElementClickInterceptedException.class);
         }
     }
 
