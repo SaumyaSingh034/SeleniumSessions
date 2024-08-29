@@ -4,6 +4,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
@@ -53,7 +54,7 @@ public class LearningSessions {
            WebElement e =  driver.findElement(By.id("checkbox"));
            if(!e.isSelected())
                e.click();
-           WebElement radio = driver.findElement(By.xpath("radioBtn"))
+           WebElement radio = driver.findElement(By.xpath("radioBtn"));
                    if(!radio.isSelected())
                        radio.click();
         }
@@ -74,6 +75,14 @@ public class LearningSessions {
                     .withTimeout(Duration.ofSeconds(15))
                     .pollingEvery(Duration.ofSeconds(2))
                     .ignoring(ElementClickInterceptedException.class);
+        }
+
+        @Test
+    public void KeyBoardActios(){
+        driver.findElement(By.id("value")).sendKeys(Keys.ENTER);
+
+        Actions a = new Actions(driver);
+        a.keyDown(Keys.ARROW_DOWN);
         }
     }
 
