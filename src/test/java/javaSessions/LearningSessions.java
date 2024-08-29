@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.io.File;
@@ -83,6 +84,19 @@ public class LearningSessions {
 
         Actions a = new Actions(driver);
         a.keyDown(Keys.ARROW_DOWN);
+        }
+
+        @DataProvider(name = "SetParametersData")
+    public Object[][] setdata(){
+        return new Object[][]{
+                {"saumya1","passwo1"},
+                {"tryaksh","pass2"},
+        };
+        }
+
+        @Test(dataProvider = "SetParametersData")
+    public void parameterization(String userName, String password){
+            driver.findElement(By.id("value")).sendKeys(userName);
         }
     }
 
