@@ -97,6 +97,8 @@ public class LearningSessions {
         @Test(dataProvider = "SetParametersData")
     public void parameterization(String userName, String password){
             driver.findElement(By.id("value")).sendKeys(userName);
+            System.out.println("");
         }
+
     }
 
