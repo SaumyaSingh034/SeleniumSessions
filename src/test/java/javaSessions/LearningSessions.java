@@ -17,13 +17,13 @@ public class LearningSessions {
     public WebDriver driver;
 
     @BeforeMethod
-    public void browserSetup()
-    {
+    public void browserSetup() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
     }
+
     @Test
-    public void learningTest(){
+    public void learningTest() {
 
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,1000)");
@@ -35,14 +35,25 @@ public class LearningSessions {
     }
 
     @Test
-    public void learnScreeshot(){
+    public void learnScreeshot() {
         TakesScreenshot screenshot = (TakesScreenshot) driver;
         File src = screenshot.getScreenshotAs(OutputType.FILE);
         File des = new File("screenshot.png");
         try {
-            FileUtils.copyFile(src,des);
+            FileUtils.copyFile(src, des);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
-}
+
+        @Test
+        public void learnCheckBoxorRadioButn () {
+           WebElement e =  driver.findElement(By.id("checkbox"));
+           if(!e.isSelected())
+               e.click();
+           WebElement radio = driver.findElement(By.xpath("radioBtn"))
+                   if(!radio.isSelected())
+                       radio.click();
+        }
+    }
+
