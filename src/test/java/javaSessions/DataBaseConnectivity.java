@@ -3,10 +3,7 @@ package javaSessions;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class DataBaseConnectivity {
 
@@ -25,8 +22,14 @@ public class DataBaseConnectivity {
             throw new RuntimeException(e);
         }
 
+    }
 
-
-
+    @Test
+    public void practice() throws SQLException, ClassNotFoundException {
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection con = DriverManager.getConnection("url","username","password");
+        Statement st = con.createStatement();
+        ResultSet result = st.executeQuery("query");
+        result.getRowId(1);
     }
 }
