@@ -39,6 +39,8 @@ public class PracticeSession {
     public void explicitWait(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id("")));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
 
     }
 
