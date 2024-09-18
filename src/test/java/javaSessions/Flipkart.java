@@ -36,10 +36,10 @@ public class Flipkart {
         Wait<WebDriver> fWait = new FluentWait<>(driver).withTimeout(Duration.ofSeconds(10))
                 .pollingEvery(Duration.ofSeconds(2))
                 .ignoring(ElementNotInteractableException.class);
-        fWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//form[@class='_2rslOn header-form-search']")));
-        driver.findElement(By.xpath("//form[@class='_2rslOn header-form-search']")).sendKeys("Iphone 15 pro max");
+        fWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@class='Pke_EE']")));
+        driver.findElement(By.xpath("//input[@class='Pke_EE']")).sendKeys("Iphone 15 pro max");
 
-        driver.findElement(By.xpath("//form[@class='_2rslOn header-form-search']")).sendKeys(Keys.ENTER);
+        driver.findElement(By.xpath("//input[@class='Pke_EE']")).sendKeys(Keys.ENTER);
     }
 
     @AfterMethod
