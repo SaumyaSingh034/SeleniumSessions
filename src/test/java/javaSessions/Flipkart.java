@@ -1,8 +1,14 @@
 package javaSessions;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.By;
+import org.openqa.selenium.ElementNotInteractableException;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -19,7 +25,21 @@ public class Flipkart {
         driver.manage().deleteAllCookies();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         driver.manage().window().maximize();
+
+    }
+
+    @Test
+    public void validationOnFlipkart(){
         driver.get("https://www.flipkart.com/");
+        String title = driver.getTitle();
+        System.out.println(title);
+        Wait<WebDriver> fWait = new FluentWait<>(driver).withTimeout(Duration.ofSeconds(10))
+                .pollingEvery(Duration.ofSeconds(2))
+                .ignoring(ElementNotInteractableException.class);
+        fWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//form[@class='_2rslOn header-form-search']")));
+        driver.findElement(By.xpath("//form[@class='_2rslOn header-form-search']")).sendKeys("Iphone 15 pro max");
+
+        driver.findElement(By.xpath("//form[@class='_2rslOn header-form-search']")).sendKeys(Keys.ENTER);
     }
 
     @AfterMethod
