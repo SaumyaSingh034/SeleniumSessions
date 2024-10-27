@@ -71,6 +71,8 @@ public class Alerts {
     @Test(priority = 3)
     public void testing(){
         Actions act = new Actions(driver);
+        alert = driver.switchTo().alert();
+
         //act.moveToElement(driver.findElement())
     }
 
