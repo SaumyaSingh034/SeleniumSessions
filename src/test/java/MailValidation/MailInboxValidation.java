@@ -1,6 +1,6 @@
 package MailValidation;
 
-import javax.mail.*;
+
 import java.util.Properties;
 
 public class MailInboxValidation {
@@ -9,7 +9,7 @@ public class MailInboxValidation {
         Properties prop = new Properties();
         prop.put("mail.store.protocol","imaps");
 
-        Session session = Session.getDefaultInstance(prop, null);
+        //Session session = Session.getDefaultInstance(prop, null);
 
     }
 }
