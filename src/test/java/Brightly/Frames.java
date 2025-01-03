@@ -16,7 +16,7 @@ public class Frames {
         driver.switchTo().frame(driver.findElement(By.id("")));
         driver.switchTo().defaultContent();
         Select s = new Select(driver.findElement(By.id("")));
-        driver.findElement(By.id("")).
+        driver.findElement(By.id("")).isDisplayed();
     }
 
 }
