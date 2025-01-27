@@ -11,6 +11,12 @@ public class ActionsTest {
     @Test
     public void actionsTest(){
         Actions actions = new Actions(driver);
+//        Action a = new Action() {
+//            @Override
+//            public void perform() {
+//
+//            }
+//        }
         actions.dragAndDrop(driver.findElement(By.xpath("//*[text(),'Hello']")),
                 driver.findElement(By.xpath("//*[starts-with,'data']"))).build();
     }
