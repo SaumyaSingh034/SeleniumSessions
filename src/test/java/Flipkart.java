@@ -1,19 +1,26 @@
-package javaSessions;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
-public class BookStoreApplication {
-
+public class Flipkart {
     public WebDriver driver;
+
+//    @BeforeMethod
+//    public void setUp(){
+//        WebDriverManager.chromedriver().setup();
+//        driver = new ChromeDriver();
+//        driver.manage().deleteAllCookies();
+//        driver.manage().window().fullscreen();
+//
+//    }
 
     @BeforeMethod
     public void setUp(){
@@ -21,18 +28,16 @@ public class BookStoreApplication {
         driver = new ChromeDriver();
         driver.manage().deleteAllCookies();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
     }
 
+
     @Test
-    public void bookStoreApplicationLogin(){
-        //driver.get("https://demoqa.com/login");
+    public void invokeFlipkart(){
         driver.get("https://www.flipkart.com/");
-//        driver.findElement(By.id("userName")).sendKeys("SaumTest");
-//        driver.findElement(By.id("password")).sendKeys("Test@123456789");
-//        driver.findElement(By.id("login")).click();
         WebElement login = driver.findElement(By.xpath("//*[text()='Login']"));
         Actions action = new Actions(driver);
         action.moveToElement(login).perform();
     }
+
 }
