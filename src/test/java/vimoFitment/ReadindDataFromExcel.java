@@ -24,7 +24,7 @@ public class ReadindDataFromExcel {
             Workbook workbook = new XSSFWorkbook(file);
             Sheet sheet = workbook.getSheet("Sheet1");
             Row row = sheet.getRow(0);
-            row.getCell(0)
+            row.getCell(0);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
