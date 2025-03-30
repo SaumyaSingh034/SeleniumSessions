@@ -58,7 +58,7 @@ public class HdfcAutomation {
 
         //click on know more
         driver.switchTo().frame("login_page");
-        driver.findElement(By.xpath("((//span[@class='color666'])[2]/following::span)[1]")).click();
+        driver.findElement(By.xpath("(//span[@class='color666']/following::span[@class='lightbluecolor'])[2]")).click();
         Set<String> newWindows = driver.getWindowHandles();
         Iterator<String> newIterator = newWindows.iterator();
         String childParent = newIterator.next();
