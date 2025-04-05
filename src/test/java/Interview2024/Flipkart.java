@@ -36,6 +36,10 @@ public class Flipkart {
         public void searchPage(){
 
             driver.findElement(By.xpath("//span[text()='Login']")).click();
+            driver.switchTo().frame(0);
+            driver.switchTo().defaultContent();
+            driver.findElement(By.id("id")).sendKeys(Keys.SHIFT);
+
 
 
 
