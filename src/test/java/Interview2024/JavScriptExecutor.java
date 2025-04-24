@@ -5,6 +5,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
@@ -18,7 +19,7 @@ public class JavScriptExecutor {
         js.executeScript("document.getElementsByName('textBox')[0].value='text';");
     }
 
-    @Test
+    //@Listeners(BrowserLevel.class)
     public void hiddenElemenet(){
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("document.getElementById('hiddenElementId').click();");
