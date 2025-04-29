@@ -1,12 +1,13 @@
 package Interview2024;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import io.cucumber.java.it.Data;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.*;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+import java.time.Duration;
 
 public class InterviewPrep {
     public WebDriver driver;
@@ -30,12 +31,39 @@ public class InterviewPrep {
         actions.clickAndHold().build().perform();
     }
 
-    @Test
-    public void javaScriptClass() {
+    @Test(dataProvider = "testData")
+    public void javaScriptClass(String name, String des, String age) {
+        System.out.println(name);
+        System.out.println(des);
+        System.out.println(age);
         WebElement el = driver.findElement(By.id(""));
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].style.border = '3px solid red'",el);
 
 
+    }
+
+    @Test(groups ={"smoke"})
+    public void waits(){
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("id"))).click();
+
+        Wait fWait = new FluentWait(driver).withTimeout(Duration.ofSeconds(10))
+                .pollingEvery(Duration.ofSeconds(2))
+                .ignoring(NoSuchElementException.class);
+        fWait.until(ExpectedConditions.visibilityOfElementLocated(By.id("id")));
+    }
+
+
+    @DataProvider
+    public Object[][] testData(){
+        return new Object[][]
+                {
+                        {"Saumya", "Test Automation Engineer", "29"},
+                        {"Diksha", "Test Automation Engineer", "29"},
+                        {"Romi", "Test Automation Engineer", "29"},
+                };
     }
 }
