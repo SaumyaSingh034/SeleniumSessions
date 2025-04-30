@@ -41,6 +41,8 @@ public class InterviewPrep {
         js.executeScript("arguments[0].style.border = '3px solid red'",el);
 
 
+
+
     }
 
     @Test(groups ={"smoke"})
@@ -54,6 +56,8 @@ public class InterviewPrep {
                 .pollingEvery(Duration.ofSeconds(2))
                 .ignoring(NoSuchElementException.class);
         fWait.until(ExpectedConditions.visibilityOfElementLocated(By.id("id")));
+        driver.getWindowHandles().size();
+        wait.until(ExpectedConditions.numberOfWindowsToBe(4));
     }
 
 
