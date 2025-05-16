@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 
 import java.time.Duration;
 
@@ -18,6 +19,11 @@ public class ScenarioBased {
     public void setup(){
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
+    }
+
+    @Test(retryAnalyzer = RetryAnalyzerTest.class)
+    public void retyrLogic(){
+
     }
 
 
