@@ -25,5 +25,9 @@ public class SelectMethods {
         options.addArguments("--disable-notification");
         driver = new ChromeDriver(options);
 
+        ChromeOptions options1 = new ChromeOptions();
+        options1.setAcceptInsecureCerts(true);
+
+
     }
 }
