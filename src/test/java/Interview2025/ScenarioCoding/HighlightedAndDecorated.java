@@ -1,5 +1,6 @@
 package Interview2025.ScenarioCoding;
 
+import Interview2025.RetryTest;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
@@ -21,7 +22,7 @@ public class HighlightedAndDecorated {
         }
     }
 
-    @Test
+    @Test(retryAnalyzer = RetryTest.class)
     public void shiftDown(){
         Actions action = new Actions(driver);
         action.sendKeys(Keys.PAGE_DOWN).perform();
