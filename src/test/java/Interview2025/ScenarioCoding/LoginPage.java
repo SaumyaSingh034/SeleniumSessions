@@ -28,4 +28,8 @@ public class LoginPage {
         btn.click();
         return new DashBoardPage();
     }
+
+    public String getTextOfWelcomePage() {
+        return "";
+    }
 }
